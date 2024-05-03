@@ -9,7 +9,7 @@ It however is simplified to only 2 roles (as of May 2024) a Town person and the 
 the Murder can kill people every night. Every day the town chats to decide who they should  
 lynch to find who the murderer is!  
 
-[Home](./images/murderHome.png)
-[Waiting_Room](./images/murderWait.png)
-[Game](./images/murderGame.png)
+![Home](./images/murderHome.png)
+![Waiting_Room](./images/murderWait.png)
+![Game](./images/murderGame.png)
 

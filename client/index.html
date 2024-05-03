@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Murder Chat Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <!-- home page -->
+            <div v-if="page == 'home'" class="container">
+                <h1 class="title">Murder Chat Game</h1>
+                <h3>Please Enter your info below</h3>
+                <div>
+                    <h3> {{numberOfPlayers}} / {{maxPlayers}} players playing </h3>
+                    <br />
+                    <br />
+                    <span>Players Name: </span>
+                    <input type="text" placeholder="John Doe" v-model="username" />
+                    <br />
+                    <br />
+                    <button class="start-button" @click="page='waiting'; sendMessage('start')" v-if="username.length > 0">{{(numberOfPlayers >= maxPlayers)? "Spectate" : "Start"}}</button>
+                </div>
+            </div>
+            <!-- Waiting Page -->
+            <div v-if="page == 'waiting'">
+                <h3> {{numberOfPlayers}} / {{maxPlayers}} players ...</h3>
+                <h3>{{username}}, your role this round is {{role}}</h3>
+                <p>Please wait until others join, thanks for your patience :)</p>
+            </div>
+            <!-- Game -->
+            <div v-if="page == 'game'" class="game-container">
+                <button v-if="gameover" @click="quit()">Quit</button>
+                <div class="player-info">
+                    <h3>Player Info:</h3>
+                    <p>Name: {{username}}</p>
+                    <p>Role: {{role}}</p>
+                </div>
+                <h3>Messages</h3>
+                <div id="chat-box" class="message-box">
+                    <span class="message" v-for="message in messages">{{message.username}} : {{message.message}}</span>
+                </div>
+                <h3>Whispers</h3>
+                <div id="whisper-box" class="message-box" v-for= "whisper in whisperMessages">
+                    <span class="message">{{whisper.sender}} : {{whisper.message}}</span>
+                </div>
+                <input type="text" v-model="textMessage" />
+                <select v-model="receiver">
+                    <option v-for="player in players" :value="player.id">{{player.username}}</option>
+                </select>
+                <br />
+                <br />
+                <button @click="sendMessage('message-town')" v-if="!disableMessages">Send Town</button>
+                <button @click="sendMessage('message-whisper')" v-if="!disableMessages">Send Whisper</button>
+                <button v-if="role == 'murderer' && disableMessages" @click="sendMessage('kill')">Murder</button>
+                <h3>Vote</h3>
+                <div class="vote-box" id="vote">
+                    <div v-for="player in players" :key="player.id" class="vote-option">
+                        <input type="radio" :value="player.id" :disabled="voted || disableMessages" v-model="vote" />
+                        <label :for="player">{{ player.username }} </label>
+                    </div>
+                </div>
+                <button v-if="!voted" @click="sendMessage('vote'); voted = true" :disabled="disableMessages">Vote</button>
+                <button v-if="voted" @click="sendMessage('unvote'); voted = false" :disabled="disableMessages">Unvote</button>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a; /* Dark background color */
+    color: #fff; /* Text color */
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-size: 3rem;
+    color: #ff4d4d; /* Red color for the title */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Text shadow for a spooky effect */
+}
+
+.start-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ff4d4d; /* Red background color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Button shadow for depth */
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #e60000; /* Darker red on hover */
+}
+/* Main game container */
+.game-container {
+    background-color: #1a1a1a; /* Dark background */
+    color: #fff; /* Text color */
+    font-family: 'Arial', sans-serif;
+    padding: 0 250px 0px 230px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /1* Subtle glow effect *1/ */
+    width: 80%; /* Adjust width to your preference */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Player Info styling */
+.player-info {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #ff4d4d; 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glow effect */
+}
+
+/* Message box styling */
+.message-box {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.message {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input and button styling */
+input[type="text"],
+button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    /* text-transform: uppercase; */
+}
+
+input[type="text"] {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    background-color: #ff4d4d; /* Red button */
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e60000; /* Darker red on hover */
+}
+
+/* Vote box styling */
+.vote-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vote-option {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.vote-option label {
+    cursor: pointer;
+}
+
+/* Styling for disabled elements */
+[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
